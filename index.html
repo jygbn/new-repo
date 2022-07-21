@@ -1,24 +1,53 @@
 <html>
   <body>
+     <input type="text" name="nameInp" id="nameInp" value="" placeholder="Enter Name" />
+    <input type="email" name="emailInp" id="emailInp" value="" placeholder="Enter Email" />
+    <input type="number" name="phoneInp" id="phoneInp" value="" placeholder="Enter Phone Number" />
+    <input type="password" name="passInp" id="passInp" value="" placeholder="Enter Password" />
+  
+    <button id="add">Add Users</button>
+    <p id="p"></p>
     
-    
-    
-    
-    <script src="indexedDB_func.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/indexedDB_functions.js" type="text/javascript" charset="utf-8"></script>
   </body>
   
   
   <script>
-  
- insertUser(db, {
+/*  request.onsuccess = (event) => {
+        const db = event.target.result;
+
+   insertUser(db, {
    name: "Sehran",
    email: "try123@gmail.com",
    phone: "7631508916",
    password: "Sehran123@"
    });
+ getUserById(db, 1);
  
- console.log(getAllUsers(db));
-    
+  };*/
+  
+  add.onclick = function() {
+    if(request.readyState === "done" && nameInp.value != "" && emailInp.value != "" && phoneInp.value != "" && passInp.value != "") {
+      const db = request.result;
+      insertUser(db, {
+        name    : nameInp.value,
+        email   : emailInp.value,
+        phone   : phoneInp.value,
+        password: passInp.value
+   });
+   getAllUsers(db);
+   getUserByEmail(db, "mddilshan232@gmail.com");
+   p.innerHTML = "Submitted Successfully!";
+   document.getElementsByTagName("INPUT")[0].value = "";
+   document.getElementsByTagName("INPUT")[1].value = "";
+   document.getElementsByTagName("INPUT")[2].value = "";
+   document.getElementsByTagName("INPUT")[3].value = "";
+    }
+    else {
+      console.log("Failure!");
+    }
+  }
+   
   </script>
   
   
