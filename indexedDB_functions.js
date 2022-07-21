@@ -1,8 +1,7 @@
-(function () {
+
     // check for IndexedDB support
     if (!window.indexedDB) {
         console.log(`Your browser doesn't support IndexedDB`);
-        return;
     }
 
     // open the CRM database with the version 1
@@ -32,6 +31,18 @@
     // handle the success event
     request.onsuccess = (event) => {
         const db = event.target.result;
+        
+    /*    insertUser(db, {
+   name: "Sehran",
+   email: "try123@gmail.com",
+   phone: "7631508916",
+   password: "Sehran123@"
+   });*/
+// getAllUsers(db);
+ //getUserById(db, 1);
+ 
+ 
+       
 
         // insert Users
         // insertUser(db, {
@@ -57,7 +68,7 @@
         // get all Users
         // getAllUsers(db);
 
-        deleteUser(db, 1);
+       // deleteUser(db, 1);
 
     };
 
@@ -98,7 +109,7 @@
             if (!event.target.result) {
                 console.log(`The User with ${id} not found`);
             } else {
-                console.table(event.target.result);
+                console.log(event.target.result);
             }
         };
 
@@ -122,7 +133,7 @@
 
         // return the result object on success
         query.onsuccess = (event) => {
-            console.table(query.result); // result objects
+            console.log(query.result); // result objects
         };
 
         query.onerror = (event) => {
@@ -181,4 +192,4 @@
         };
 
     }
-})();
+
